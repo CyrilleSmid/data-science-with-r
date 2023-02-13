@@ -1,7 +1,9 @@
+library(factoextra)
+
 real_estate_data <- read.csv("real_estate_ufa.csv", sep=";")
 real_estate_scaled_data = scale(real_estate_data)
 
-cluster_stats <- factoextra::fviz_nbclust(real_estate_scaled_data, kmeans, method = "silhouette")
+cluster_stats <- fviz_nbclust(real_estate_scaled_data, kmeans, method = "silhouette")
 n_clust<-cluster_stats$data
 max_cluster<-as.numeric(n_clust$clusters[which.max(n_clust$y)])
 
